@@ -1,10 +1,10 @@
 package com.mini.autorizador.autorizador.controller;
 
 import com.mini.autorizador.autorizador.DTO.CartaoDTO;
+import com.mini.autorizador.autorizador.DTO.TransacaoDTO;
 import com.mini.autorizador.autorizador.service.CartaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/cartoes")
-public class AutorizadorController {
+public class CartoesController {
 
     @Autowired
     CartaoService service;
@@ -25,9 +25,12 @@ public class AutorizadorController {
             else return ResponseEntity.ok(response);
     }
 
-    @GetMapping
-    public ResponseEntity<String> get(){
-        return ResponseEntity.ok().body("Resposta");
+    @GetMapping(value = "/{numero}")
+    public ResponseEntity<Double> getSaldo(@PathVariable String numero) throws Exception {
+        var response = Optional.ofNullable(service.getSaldo(numero))
+                .orElse(null);
+        if(response == null) return ResponseEntity.status(404).body(null);
+        else return ResponseEntity.ok(response);
     }
 
 }
