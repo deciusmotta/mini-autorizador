@@ -23,9 +23,7 @@ public class TransacaoController {
 
     @PostMapping
     public ResponseEntity<ResponseEnum> postTransacao(@Valid @RequestBody TransacaoDTO transacaoDTO) {
-        var result = service.transacao(transacaoDTO);
-        if(result.equals(ResponseEnum.OK)){
-            return ResponseEntity.ok().body(ResponseEnum.OK);
-        }else return ResponseEntity.status(422).body(result);
+        service.transacao(transacaoDTO);
+        return ResponseEntity.ok().body(ResponseEnum.OK);
     }
 }
