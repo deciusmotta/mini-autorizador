@@ -18,13 +18,13 @@ public class CartoesController {
     CartaoService service;
 
     @PostMapping
-    public ResponseEntity<CartaoDTO> postCartao(@Valid @RequestBody CartaoDTO cartaoDTO){
+    public ResponseEntity<Object> postCartao(@Valid @RequestBody CartaoDTO cartaoDTO){
         service.salvarNovoCartao(cartaoDTO);
         return ResponseEntity.status(422).body(cartaoDTO);
     }
 
     @GetMapping(value = "/{numero}")
-    public ResponseEntity<Double> getSaldo(@PathVariable String numero) {
+    public ResponseEntity<Object> getSaldo(@PathVariable String numero) {
         var saldo = service.getSaldo(numero);
         return ResponseEntity.ok().body(saldo);
     }

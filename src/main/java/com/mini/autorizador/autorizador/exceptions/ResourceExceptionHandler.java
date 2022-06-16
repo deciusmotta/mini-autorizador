@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.time.Instant;
 
 import static com.mini.autorizador.autorizador.ResponseEnum.*;
@@ -24,7 +25,7 @@ public class ResourceExceptionHandler {
     @Autowired
     CartaoRespository respository;
 
-    private static Double VALOR_INICIAL = 500.0;
+    private static BigDecimal VALOR_INICIAL = new BigDecimal(500);
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> validation(MethodArgumentNotValidException e, HttpServletRequest request) {

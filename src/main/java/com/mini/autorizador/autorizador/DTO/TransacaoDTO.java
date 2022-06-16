@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -26,7 +27,7 @@ public class TransacaoDTO implements Serializable {
     private String senhaCartao;
     @PositiveOrZero(message = "VALOR DEVE SER POSITIVO")
     @NotNull(message = "FALTA CAMPO VALOR")
-    private Double valor;
+    private BigDecimal valor;
 
     public Boolean senhaIgual(String senhaPersistida){
         return this.senhaCartao.equals(senhaPersistida);

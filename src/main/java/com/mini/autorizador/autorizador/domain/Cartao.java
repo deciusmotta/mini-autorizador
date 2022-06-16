@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -16,5 +17,5 @@ public class Cartao implements Serializable {
     @Id
     private String numeroCartao;
     private String senha;
-    private Double saldo;
+    private BigDecimal saldo;
 }
