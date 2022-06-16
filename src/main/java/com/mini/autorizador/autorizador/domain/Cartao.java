@@ -6,19 +6,15 @@ import org.hibernate.annotations.Proxy;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Proxy(lazy=false)
 @Table(name = "cartao")
-public class Cartao {
+public class Cartao implements Serializable {
     @Id
-    @NotEmpty
-    @Size(min=16,max=16,message = "VALOR COM 16 CARACTERES")
     private String numeroCartao;
-    @NotEmpty
     private String senha;
     private Double saldo;
 }
