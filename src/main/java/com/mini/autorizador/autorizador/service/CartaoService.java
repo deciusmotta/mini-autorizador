@@ -36,7 +36,7 @@ public class CartaoService {
              var result = cartaoBuscado.getSaldo()-dto.getValor();
              if(result>=0) {
                  cartaoBuscado.setSaldo(result);
-                 respository.save(cartaoBuscado);
+                 respository.saveAndFlush(cartaoBuscado);
              }else{
                  throw new SaldoInsuficienteException();
              }
