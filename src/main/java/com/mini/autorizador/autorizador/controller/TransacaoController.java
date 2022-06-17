@@ -1,7 +1,7 @@
 package com.mini.autorizador.autorizador.controller;
 
 import com.mini.autorizador.autorizador.DTO.TransacaoDTO;
-import com.mini.autorizador.autorizador.ResponseEnum;
+import com.mini.autorizador.autorizador.enums.ResponseEnum;
 import com.mini.autorizador.autorizador.service.CartaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

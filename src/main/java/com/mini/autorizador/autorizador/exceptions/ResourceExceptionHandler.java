@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-import static com.mini.autorizador.autorizador.ResponseEnum.*;
+import static com.mini.autorizador.autorizador.enums.ResponseEnum.*;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -42,7 +42,7 @@ public class ResourceExceptionHandler {
     }
 
     @ExceptionHandler(CartaoNaoExistenteException.class)
-    public ResponseEntity<Object> validation(CartaoNaoExistenteException e) {
+    public ResponseEntity<Object> cartaoNaoExiste(CartaoNaoExistenteException e) {
         var cartaoDTO = e.getCartaoDTO();
         var cartao = new Cartao();
         var senhaCriptografada = Encript.encript(cartaoDTO.getSenha(),cartaoDTO.getNumeroCartao());
@@ -55,22 +55,22 @@ public class ResourceExceptionHandler {
     }
 
     @ExceptionHandler(GetSaldoException.class)
-    public ResponseEntity<Object> validation(GetSaldoException e) {
+    public ResponseEntity<Object> getSaldo(GetSaldoException e) {
         return ResponseEntity.status(404).build();
     }
 
     @ExceptionHandler(TransacaoCartaoInexistenteException.class)
-    public ResponseEntity<Object> validation(TransacaoCartaoInexistenteException e) {
+    public ResponseEntity<Object> transacaoCartaoInexistente(TransacaoCartaoInexistenteException e) {
         return ResponseEntity.status(422).body(CARTAO_INEXISTENTE);
     }
 
     @ExceptionHandler(SenhaDiferenteException.class)
-    public ResponseEntity<Object> validation(SenhaDiferenteException e) {
+    public ResponseEntity<Object> senhaDiferente(SenhaDiferenteException e) {
         return ResponseEntity.status(422).body(SENHA_INVALIDA);
     }
 
     @ExceptionHandler(SaldoInsuficienteException.class)
-    public ResponseEntity<Object> validation(SaldoInsuficienteException e) {
+    public ResponseEntity<Object> saldoInsulficiente(SaldoInsuficienteException e) {
         return ResponseEntity.status(422).body(SALDO_INSUFICIENTE);
     }
 
