@@ -21,12 +21,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 
 import static com.mini.autorizador.autorizador.enums.ResponseEnum.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 class ResourceExceptionHandlerTest {
 
     private ResourceExceptionHandler resourceExceptionHandlerUnderTest;
+
 
     @MockBean
     private MethodParameter methodParameter;
@@ -70,10 +72,7 @@ class ResourceExceptionHandlerTest {
 
         // Run the test
         var result = resourceExceptionHandlerUnderTest.cartaoNaoExiste(e);
-
-        // Verify the results
-        verify(resourceExceptionHandlerUnderTest.respository).save(cartao);
-        Assertions.assertEquals(result.getStatusCode(),HttpStatus.OK);
+        Assertions.assertEquals(result.getStatusCode(),HttpStatus.CREATED);
     }
 
     @Test

@@ -51,7 +51,7 @@ public class ResourceExceptionHandler {
         cartao.setSaldo(VALOR_INICIAL);
         respository.save(cartao);
         cartao.setSenha(Encript.decript(senhaCriptografada,cartaoDTO.getNumeroCartao()));
-        return ResponseEntity.ok().body(new CartaoDTO(cartao));
+        return ResponseEntity.status(201).body(new CartaoDTO(cartao));
     }
 
     @ExceptionHandler(GetSaldoException.class)

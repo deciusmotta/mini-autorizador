@@ -26,7 +26,8 @@ public class CartaoDTO implements Serializable {
     private String senha;
 
     public CartaoDTO(Cartao cartao){
-        numeroCartao = cartao.getNumeroCartao();
-        senha = cartao.getSenha();
+        this.numeroCartao = cartao.getNumeroCartao();
+        this.senha = cartao.getSenha();
     }
+
 }

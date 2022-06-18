@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,7 +25,7 @@ public class TransacaoDTO implements Serializable {
     @NotNull(message = "FALTA CAMPO SENHA")
     @NotEmpty(message = "VALOR NAO PODE SER VAZIO")
     private String senhaCartao;
-    @PositiveOrZero(message = "VALOR DEVE SER POSITIVO")
+    @Positive(message = "VALOR DEVE SER POSITIVO MAIOR QUE ZERO")
     @NotNull(message = "FALTA CAMPO VALOR")
     private BigDecimal valor;
 

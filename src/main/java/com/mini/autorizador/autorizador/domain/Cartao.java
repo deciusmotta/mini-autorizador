@@ -1,6 +1,9 @@
 package com.mini.autorizador.autorizador.domain;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.Entity;
@@ -9,11 +12,15 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Proxy(lazy=false)
 @Table(name = "cartao")
 public class Cartao implements Serializable {
+
     @Id
     private String numeroCartao;
     private String senha;
